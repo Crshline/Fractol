@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:01:20 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/26 13:28:10 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/01/27 10:59:06 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,33 @@ void	fractol_init(t_fractol *fractol)
 int	main(int ac, char **av)
 {
 	t_fractol	fractol;
-	if(ac == 2 && ft_strncmp(av[1], "mandelbrot", 10) == 0)
+
+	fractol.mlx_connexion = NULL;
+	fractol.mlx_windows = NULL;
+	fractol.image_ptr = NULL;
+	if (ac == 2 && ft_strncmp(av[1], "mandelbrot", 10) == 0)
 		fractol.name = "mandelbrot";
-	else if(ac == 4 && ft_strncmp(av[1], "julia", 5) == 0)
+	else if (ac == 4 && ft_strncmp(av[1], "julia", 5) == 0)
 	{
+		if (!is_valid_number(av[2]) || !is_valid_number(av[3]))
+		{
+			write(2, "Nombre d'arguments invalides.\n", 31);
+			write(1, "Aide :\n", 8);
+			write(1, "mandelbrot\n", 12);
+			write(1, "julia <real> <imaginary>\n", 26);
+			return (1);
+		}
 		fractol.name = "julia";
-		fractol.julia_c.a = atof(av[2]);
-		fractol.julia_c.b = atof(av[3]);
+		fractol.julia_c.a = ft_atof(av[2]);
+		fractol.julia_c.b = ft_atof(av[3]);
 	}
 	else
 	{
-		write(1, "Nombre d'arguments invalides :\n", 32);
+		write(2, "Nombre d'arguments invalides.\n", 31);
+		write(1, "Aide :\n", 8);
 		write(1, "mandelbrot\n", 12);
 		write(1, "julia <real> <imaginary>\n", 26);
-		return(1);
+		return (1);
 	}
 	fractol_init(&fractol);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:24:40 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/26 13:22:23 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/01/27 10:56:27 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,12 @@ int				keysym(int keysym, t_fractol *fractol);
 int				mouse(int button, int x, int y, t_fractol *fractol);
 t_complex		pixel_to_complex(t_fractol *fractol, int x, int y);
 int				mandelbrot(t_complex c);
+int				julia(t_complex z, t_complex julia_c);
 int				get_color(int iteration);
-void			render(t_fractol *fractol);
+void			display(t_fractol *fractol);
 void			my_pixel_put(t_fractol *fractol, int x, int y, int color);
 void			fractol_init(t_fractol *fractol);
+double			ft_atof(char *str);
+int				is_valid_number(char *str);
 
 #endif

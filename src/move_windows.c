@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 12:32:32 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/26 12:33:54 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/01/27 10:57:24 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	keysym(int keysym, t_fractol *fractol)
 
 int	mouse(int button, int x, int y, t_fractol *fractol)
 {
+	(void)x;
+	(void)y;
 	if (button == 4)
 	{
 		fractol->zoom = fractol->zoom * 1.1;
@@ -52,7 +54,5 @@ int	mouse(int button, int x, int y, t_fractol *fractol)
 		fractol->zoom = fractol->zoom / 1.1;
 		render(fractol);
 	}
-	(void)x;
-	(void)y;
 	return (0);
 }
