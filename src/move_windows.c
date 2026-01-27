@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 12:32:32 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/27 10:57:24 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/01/27 12:03:03 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ int	keysym(int keysym, t_fractol *fractol)
 	else if (keysym == 65362)
 	{
 		fractol->offset_y = fractol->offset_y - (50.0 / fractol->zoom);
-		render(fractol);
+		display(fractol);
 	}
 	else if (keysym == 65361)
 	{
 		fractol->offset_x = fractol->offset_x - (50.0 / fractol->zoom);
-		render(fractol);
+		display(fractol);
 	}
 	else if (keysym == 65364)
 	{
 		fractol->offset_y = fractol->offset_y + (50.0 / fractol->zoom);
-		render(fractol);
+		display(fractol);
 	}
 	else if (keysym == 65363)
 	{
 		fractol->offset_x = fractol->offset_x + (50.0 / fractol->zoom);
-		render(fractol);
+		display(fractol);
 	}
 	return (0);
 }
@@ -47,12 +47,12 @@ int	mouse(int button, int x, int y, t_fractol *fractol)
 	if (button == 4)
 	{
 		fractol->zoom = fractol->zoom * 1.1;
-		render(fractol);
+		display(fractol);
 	}
 	else if (button == 5)
 	{
 		fractol->zoom = fractol->zoom / 1.1;
-		render(fractol);
+		display(fractol);
 	}
 	return (0);
 }

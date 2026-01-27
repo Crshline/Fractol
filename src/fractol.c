@@ -6,12 +6,20 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:01:20 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/27 10:59:06 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/01/27 12:03:15 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "libft.h"
+
+void	error_msg(void)
+{
+	ft_putstr_fd("Nombre d'arguments invalides.\n", 2);
+	ft_putstr_fd("Aide :\n", 2);
+	ft_putstr_fd("mandelbrot\n", 2);
+	ft_putstr_fd("julia <real> <imaginary>\n", 2);
+}
 
 void	my_pixel_put(t_fractol *fractol, int x, int y, int color)
 {
@@ -21,12 +29,20 @@ void	my_pixel_put(t_fractol *fractol, int x, int y, int color)
 	*(unsigned int *)(fractol->pixel_ptr + offset) = color;
 }
 
-void	fractol_init(t_fractol *fractol)
+static void	preamble(t_fractol *fractol)
 {
-	fractol->mlx_connexion = mlx_init();
 	fractol->zoom = 250.0;
 	fractol->offset_x = 0.0;
 	fractol->offset_y = 0.0;
+	mlx_mouse_hook(fractol->mlx_windows, mouse, fractol);
+	mlx_key_hook(fractol->mlx_windows, keysym, fractol);
+	mlx_hook(fractol->mlx_windows, 17, 0, close_cross, fractol);
+	display(fractol);
+}
+
+void	fractol_init(t_fractol *fractol)
+{
+	fractol->mlx_connexion = mlx_init();
 	if (fractol->mlx_connexion == NULL)
 	{
 		perror("connexion:");
@@ -49,10 +65,7 @@ void	fractol_init(t_fractol *fractol)
 	fractol->pixel_ptr = mlx_get_data_addr(fractol->image_ptr,
 			&fractol->bits_per_pixel, &fractol->size_line,
 			&fractol->octet_order);
-	render(fractol);
-	mlx_mouse_hook(fractol->mlx_windows, mouse, fractol);
-	mlx_key_hook(fractol->mlx_windows, keysym, fractol);
-	mlx_hook(fractol->mlx_windows, 17, 0, close_cross, fractol);
+	preamble(fractol);
 	mlx_loop(fractol->mlx_connexion);
 }
 
@@ -69,10 +82,7 @@ int	main(int ac, char **av)
 	{
 		if (!is_valid_number(av[2]) || !is_valid_number(av[3]))
 		{
-			write(2, "Nombre d'arguments invalides.\n", 31);
-			write(1, "Aide :\n", 8);
-			write(1, "mandelbrot\n", 12);
-			write(1, "julia <real> <imaginary>\n", 26);
+			error_msg();
 			return (1);
 		}
 		fractol.name = "julia";
@@ -81,10 +91,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		write(2, "Nombre d'arguments invalides.\n", 31);
-		write(1, "Aide :\n", 8);
-		write(1, "mandelbrot\n", 12);
-		write(1, "julia <real> <imaginary>\n", 26);
+		error_msg();
 		return (1);
 	}
 	fractol_init(&fractol);

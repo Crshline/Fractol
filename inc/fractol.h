@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:24:40 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/27 10:56:27 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/01/27 12:17:45 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int				mandelbrot(t_complex c);
 int				julia(t_complex z, t_complex julia_c);
 int				get_color(int iteration);
 void			display(t_fractol *fractol);
+void			error_msg(void);
 void			my_pixel_put(t_fractol *fractol, int x, int y, int color);
 void			fractol_init(t_fractol *fractol);
 double			ft_atof(char *str);
