@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:24:40 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/27 12:17:45 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/01/29 10:42:21 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct s_fractol
 {
 	void		*mlx_connexion;
 	void		*mlx_windows;
-
 	void		*image_ptr;
+	
 	char		*pixel_ptr;
 	int			bits_per_pixel;
 	int			size_line;

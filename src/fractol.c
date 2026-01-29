@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:01:20 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/27 12:03:15 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/01/29 10:41:03 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	fractol_init(t_fractol *fractol)
 		exit(1);
 	}
 	fractol->mlx_windows = mlx_new_window(fractol->mlx_connexion, 1000, 1000,
-			"Fractol test");
+			"Fractol");
 	if (fractol->mlx_windows == NULL)
 	{
 		perror("windows:");
