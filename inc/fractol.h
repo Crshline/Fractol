@@ -6,14 +6,13 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 13:24:40 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/29 10:42:21 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/01/29 15:15:10 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "../minilibx-linux/mlx.h"
 # include "libft.h"
 # include <errno.h>
 # include <fcntl.h>
@@ -21,7 +20,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <sys/wait.h>
 # include <unistd.h>
 
 typedef struct s_complex
@@ -35,7 +33,6 @@ typedef struct s_fractol
 	void		*mlx_connexion;
 	void		*mlx_windows;
 	void		*image_ptr;
-	
 	char		*pixel_ptr;
 	int			bits_per_pixel;
 	int			size_line;

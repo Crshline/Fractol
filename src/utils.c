@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 10:58:10 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/27 12:32:24 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/02/02 09:26:08 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,23 @@ double	ft_atof(char *str)
 int	is_valid_number(char *str)
 {
 	int	i;
-	int	digit;
-	int	dot;
 
 	i = 0;
-	digit = 0;
-	dot = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			digit = 1;
-		else if (str[i] == '.' && !dot)
-			dot = 1;
-		else
-			return (0);
+	if (str[i] < '0' || str[i] > '9')
+		return (0);
+	while (str[i] >= '0' && str[i] <= '9')
 		i++;
+	if (str[i] == '.')
+	{
+		i++;
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		while (str[i] >= '0' && str[i] <= '9')
+			i++;
 	}
-	return (digit);
+	return (str[i] == '\0');
 }

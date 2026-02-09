@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 10:55:08 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/29 12:59:28 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/02/09 11:38:20 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	get_color(int iteration)
 {
-	if (iteration == 50)
+	if (iteration == 256)
 		return (0x00000000);
-	return ((iteration * 10) << 16 | ((iteration * 5) << 8));
+	return ((iteration * 128) << 16 | ((iteration * 10) << 8) | ((iteration * 5) << 4));
 }
 
 void	display(t_fractol *fractol)

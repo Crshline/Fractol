@@ -6,7 +6,7 @@
 /*   By: jukeurme <jukeurme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:01:20 by jukeurme          #+#    #+#             */
-/*   Updated: 2026/01/29 10:41:03 by jukeurme         ###   ########.fr       */
+/*   Updated: 2026/02/02 09:29:01 by jukeurme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int	main(int ac, char **av)
 	fractol.mlx_connexion = NULL;
 	fractol.mlx_windows = NULL;
 	fractol.image_ptr = NULL;
-	if (ac == 2 && ft_strncmp(av[1], "mandelbrot", 10) == 0)
+	if (ac == 2 && ft_strncmp(av[1], "mandelbrot\0", 11) == 0)
 		fractol.name = "mandelbrot";
-	else if (ac == 4 && ft_strncmp(av[1], "julia", 5) == 0)
+	else if (ac == 4 && ft_strncmp(av[1], "julia\0", 6) == 0)
 	{
 		if (!is_valid_number(av[2]) || !is_valid_number(av[3]))
 		{
